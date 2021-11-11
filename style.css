@@ -1,0 +1,90 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Form Elements */
+.form-container {
+    border: 1px solid #dadce0;
+    width: 500px;
+    height: 450px;
+    margin: 100px auto;
+    border-radius: 5px;
+}
+
+#registration-form {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+#registration-form h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    margin-bottom: 5px;
+    padding: 3px;
+    height: 70px
+}
+
+.form-control input { 
+    width: 40%;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 10px;
+    margin-top: 3px;
+}
+
+.form-control label {
+    font-size: 14px;
+}
+
+#username-rules-text, #password-rules-text {
+    font-size: 11px;
+    color: gray;
+}
+
+#register-button {
+    border: none;
+    background-color: rgb(54, 54, 233);
+    color: white;
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    margin-left: 40%;
+    margin-top: 17px;
+}
+
+#register-button:hover {
+    cursor: pointer;
+    background-color: rgb(21, 21, 109);
+}
+
+/* Input Border Color Error/Success */
+.form-control.error input{
+    border: 2px solid red;
+}
+
+.form-control.success input {
+    border: 2px solid green;
+}
+
+/* Error Message */
+.form-control span {
+    visibility: hidden;
+    color:red;
+    font-size: 11px;
+}
+
+.form-control.error span {
+    visibility: visible;
+}

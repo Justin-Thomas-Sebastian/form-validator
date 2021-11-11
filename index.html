@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+        <link rel="stylesheet" href="style.css">
+        <title>Form Validator</title>
+    </head>
+    
+    <body>
+        <div class="form-container">
+            <form id="registration-form">
+                <h2>Create Your Account</h2>
+                <div class="form-control">
+                    <label for="first-name">Name </label><br>
+                    <input type="text" id="first-name" placeholder="First name">
+                    <label for="last-name"></label>
+                    <input type="text" id="last-name" placeholder="Last name">
+                    <span>Error</span>
+                </div>
+                <div class="form-control">
+                    <label for="user-email">Email </label><br>
+                    <input type="email" id="user-email" placeholder="Enter email">
+                    <span>Error</span>
+                </div>
+                <div class="form-control">
+                    <label for="username">Username </label><br>
+                    <input type="text" id="username" placeholder="Create username">
+                    <span>Error</span>
+                    <br>
+                    <small id="username-rules-text"> Use letters and numbers</small>
+                </div>
+                <div class="form-control">
+                    <label for="password">Password </label><br>
+                    <input type="password" id="password" placeholder="Create password">
+                    <label for="password"></label>
+                    <input type="password" id="password2" placeholder="Confirm password">
+                    <span>Error</span>
+                    <br>
+                    <small id="password-rules-text">9 or more characters with a mix of letters, numbers & symbols</small>
+                </div>
+                
+                <div class="form-control">
+                    <button id="register-button" onclick="submitForm()" type="button">Register</button>
+                </div>
+            </form>
+        </div>     
+        <script src="app.js"></script>
+    </body>
+</html>
