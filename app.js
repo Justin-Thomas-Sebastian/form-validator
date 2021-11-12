@@ -36,12 +36,16 @@ function checkRequired(formInputArr){
 
 // Checks if email is in valid format
 function checkEmail(inputEmail){
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    
-    if(re.test(inputEmail.value)) {
-        showSuccess(inputEmail);
+    if(inputEmail.parentElement.className === "form-control error"){ // if error already found, return
+        return;
     } else {
-        showError(inputEmail, "Invalid email");
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
+        if(re.test(inputEmail.value)) {
+            showSuccess(inputEmail);
+        } else {
+            showError(inputEmail, "Invalid email");
+        }
     }
 }
 
@@ -50,13 +54,16 @@ function checkEmail(inputEmail){
 // min: 6 characters
 // max: 15 characters
 function checkValidUsername (inputUsername) {
-    const re = /^[a-zA-Z0-9]{6,15}$/;
-
-    if(re.test(inputUsername.value)) {
-        showSuccess(inputUsername);
+    if(inputUsername.parentElement.className === "form-control error"){ // if error already found, return
+        return;
     } else {
-        showError(inputUsername, "Invalid username");
-    }
+        const re = /^[a-zA-Z0-9]{6,15}$/;
+        if(re.test(inputUsername.value)) {
+            showSuccess(inputUsername);
+        } else {
+            showError(inputUsername, "Invalid username");
+        }
+    }   
 }
 
 // Adds error class to form control
