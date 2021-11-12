@@ -1,8 +1,8 @@
 //TODO
 /*
-1. username validation
-2. password validation
-3. password matching
+
+1. password validation
+2. password matching
 
 */
 
@@ -16,18 +16,11 @@ const password = document.getElementById("password");
 const password2 = document.getElementById("password2");
 const formInputs = [fName, lName, useremail, username, password, password2];
 
-// Adds error class to form control
-function showError(formInput, message){
-    const formControl = formInput.parentElement;
-    formControl.className = "form-control error";
-    const errorMsgContainer = formControl.querySelector("span");
-    errorMsgContainer.innerText = message;
-}
-
-// Adds success class to form control
-function showSuccess(formInput){
-    const formControl = formInput.parentElement;
-    formControl.className = "form-control success";
+// Submit form on register button click
+function submitForm(){
+    checkRequired(formInputs);
+    checkValidUsername(username);
+    checkEmail(useremail);
 }
 
 // Checks if form values are empty
@@ -52,8 +45,31 @@ function checkEmail(inputEmail){
     }
 }
 
-// Submit form on register button click
-function submitForm(){
-    checkRequired(formInputs);
-    checkEmail(useremail);
+// function to check valid username characters and length
+// Alphanumeric
+// min: 6 characters
+// max: 15 characters
+function checkValidUsername (inputUsername) {
+    const re = /^[a-zA-Z0-9]{6,15}$/;
+
+    if(re.test(inputUsername.value)) {
+        showSuccess(inputUsername);
+    } else {
+        showError(inputUsername, "Invalid username");
+    }
 }
+
+// Adds error class to form control
+function showError(formInput, message){
+    const formControl = formInput.parentElement;
+    formControl.className = "form-control error";
+    const errorMsgContainer = formControl.querySelector("span");
+    errorMsgContainer.innerText = message;
+}
+
+// Adds success class to form control
+function showSuccess(formInput){
+    const formControl = formInput.parentElement;
+    formControl.className = "form-control success";
+}
+
