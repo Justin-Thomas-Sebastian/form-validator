@@ -1,11 +1,3 @@
-//TODO
-/*
-
-1. password validation
-2. password matching
-
-*/
-
 // DOM elements
 const form = document.getElementById("registration-form");
 const fName = document.getElementById("first-name");
@@ -19,8 +11,9 @@ const formInputs = [fName, lName, useremail, username, password, password2];
 // Submit form on register button click
 function submitForm(){
     checkRequired(formInputs);
-    checkValidUsername(username);
     checkEmail(useremail);
+    checkValidUsername(username);
+    checkValidPassword(password, password2);
 }
 
 // Checks if form values are empty
@@ -49,7 +42,7 @@ function checkEmail(inputEmail){
     }
 }
 
-// function to check valid username characters and length
+// Checks if created username uses valid characters and is proper length
 // Alphanumeric
 // min: 6 characters
 // max: 15 characters
@@ -66,6 +59,34 @@ function checkValidUsername (inputUsername) {
     }   
 }
 
+// checks if created password uses valid characters and is proper length
+// Alphanumeric
+// Valid symbols --->  !@#$%^&*()
+// min: 8
+// max: 20
+function checkValidPassword (inputPassword1, inputPassword2) {
+    if(inputPassword1.parentElement.className === "form-control error"){ // if error already found, return
+        return;
+    } else {
+        const re = /^[a-zA-Z0-9!@#$%^&*()]{8,20}$/;
+
+        if(re.test(inputPassword1.value)) {
+            checkMatch(inputPassword1, inputPassword2);
+        }else {
+            showError(inputPassword1, "Invalid");
+        }
+    }  
+}
+
+// checks if initially created password and confirmation password match
+function checkMatch (inputPassword1, inputPassword2){
+    if(inputPassword1.value === inputPassword2.value) {
+        showSuccess(inputPassword1);
+    } else {
+        showError(inputPassword1, "Not matching");
+    }
+}
+
 // Adds error class to form control
 function showError(formInput, message){
     const formControl = formInput.parentElement;
@@ -79,4 +100,3 @@ function showSuccess(formInput){
     const formControl = formInput.parentElement;
     formControl.className = "form-control success";
 }
-
